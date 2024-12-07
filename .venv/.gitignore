@@ -1,0 +1,9 @@
+# Example .gitignore for Python
+__pycache__/
+*.pyc
+*.pyo
+*.env
+*.venv
+.env
+*.log
+*.sqlite3
