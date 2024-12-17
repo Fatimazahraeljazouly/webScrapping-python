@@ -25,18 +25,17 @@ while page_number <= max_pages:
         try:
             image = item.find_element(By.CSS_SELECTOR, 'img.img').get_attribute("data-src")
             url = item.find_element(By.CSS_SELECTOR, 'a.core').get_attribute("href")
-            name = item.find_element(By.CSS_SELECTOR, "h3.name").text
-            price = item.find_element(By.CSS_SELECTOR, "div.prc").text
+            title = item.find_element(By.CSS_SELECTOR, "h3.name").text
+            current_price = item.find_element(By.CSS_SELECTOR, "div.prc").text
             old_price = item.find_element(By.CSS_SELECTOR, "div.old").text if item.find_elements(By.CSS_SELECTOR, "div.old") else None
-            discount = item.find_element(By.CSS_SELECTOR, "div.tag._dsct").text if item.find_elements(By.CSS_SELECTOR, "div.tag._dsct") else None
 
             data_product = {
                 "image": image,
                 "url": url,
-                "name": name,
-                "price": price,
+                "name": title,
+                "current_price": current_price,
                 "old_price": old_price,
-                "discount": discount
+                "Website":"Jumia"
             }
             print(data_product)
             data.append(data_product)

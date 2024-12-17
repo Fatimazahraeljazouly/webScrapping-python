@@ -6,6 +6,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 import json
 
+
 # Initialisation du WebDriver
 service = Service(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
@@ -32,17 +33,19 @@ while True and not close :
             url = item.find_element(By.CSS_SELECTOR, 'div.box-image a').get_attribute("href")
             brand = item.find_element(By.CSS_SELECTOR, "span.brand").text
             ref = item.find_element(By.CSS_SELECTOR, "span.ref").text
-            old_price = item.find_element(By.CSS_SELECTOR, "span.price").text
-            current_price = item.find_element(By.CSS_SELECTOR, "span.price").text
-            #discount = item.find_element(By.CSS_SELECTOR, "div.price-box-special span.price-discount-percent").get_attribute("innerText")
+            title=f"{ref} {brand}"
+            old_priced = item.find_element(By.CSS_SELECTOR, "span.price").text
+            old_price = f"{old_priced}Dh"
+            current_priced = item.find_element(By.CSS_SELECTOR, "span.price").text
+            current_price = f"{current_priced}Dh"
             data_product = {
                 "image": image,
                 "url": url,
-                "brand":brand,
-                "ref":ref,
+                "title":title,
                 "old_price":old_price,
-                "current_price":current_price
-                #"discount":discount
+                "current_price":current_price,
+                "Website":"ElectroPlanet"
+
             }
             print(data_product)
             data.append(data_product)

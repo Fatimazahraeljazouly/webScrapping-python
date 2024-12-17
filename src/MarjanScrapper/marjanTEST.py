@@ -57,14 +57,14 @@ for scroll in range(max_scrolls):
             try:
                 old_price1 = item.find_element(By.CSS_SELECTOR, "span.old-price span.price").text
                 old_price2 = item.find_element(By.CSS_SELECTOR, "span.float-number").text
-                old_price = f"{old_price1},{old_price2}DH"
+                old_price = f"{old_price1}"
             except NoSuchElementException:
                 old_price = "N/A"
 
             try:
                 current_price1 = item.find_element(By.CSS_SELECTOR, "span.price").text
                 current_price2 = item.find_element(By.CSS_SELECTOR, "span.float-number").text
-                current_price = f"{current_price1},{current_price2}DH"
+                current_price = f"{current_price1}"
             except NoSuchElementException:
                 current_price = "N/A"
 
@@ -74,6 +74,7 @@ for scroll in range(max_scrolls):
                 "title": title,
                 "old_price": old_price,
                 "current_price": current_price,
+                "Website":"Marjane"
             }
             print(f"Item {index + 1}: {data_product}")
             if data_product not in data:
